@@ -23,17 +23,13 @@ public class CustomerServiceTest {
     }
 
     @Test
-
     public void testGetCustomerById() {
-
         CustomerService service = new CustomerService();
-
-        Customer customer = new Customer(1, "Oumou", "oumou@email.com");
-
+        Customer customer = new Customer(1, "Oumou", "oumoue@email.com");
         service.addCustomer(customer);
-
-        assertEquals("Alice", service.getCustomerById(1).getName());
-
+        Customer found = service.getCustomerById(1);
+        assertNotNull(found);
+        assertEquals("Oumou", found.getName());
     }
 
     @Test

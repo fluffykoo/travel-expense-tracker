@@ -7,20 +7,20 @@ public class CustomerTest {
 
     @Test
     public void testCustomerConstructor() {
-        Customer customer = new Customer(1, "Alice", "alice@email.com");
+        Customer customer = new Customer(1, "Oumou", "oumou@email.com");
         assertEquals(1, customer.getId());
-        assertEquals("Alice", customer.getName());
-        assertEquals("alice@email.com", customer.getEmail());
+        assertEquals("Oumou", customer.getName());
+        assertEquals("oumou@email.com", customer.getEmail());
     }
 
     @Test
     public void testCustomerSetters() {
-        Customer customer = new Customer(1, "Alice", "alice@email.com");
+        Customer customer = new Customer(1, "Oumou", "oumou@email.com");
         customer.setId(2);
-        customer.setName("Bob");
-        customer.setEmail("bob@email.com");
+        customer.setName("William");
+        customer.setEmail("william@email.com");
         assertEquals(2, customer.getId());
-        assertEquals("Bob", customer.getName());
-        assertEquals("bob@email.com", customer.getEmail());
+        assertEquals("William", customer.getName());
+        assertEquals("william@email.com", customer.getEmail());
     }
 }

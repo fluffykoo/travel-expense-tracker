@@ -27,7 +27,7 @@ public class CustomerControllerTest {
 
     @Test
     public void testAddCustomer() throws Exception {
-        Customer customer = new Customer(1, "Alice", "alice@email.com");
+        Customer customer = new Customer(1, "Oumou", "oumou@email.com");
         ObjectMapper objectMapper = new ObjectMapper();
         mockMvc.perform(post("/customers")
                 .contentType(MediaType.APPLICATION_JSON)
