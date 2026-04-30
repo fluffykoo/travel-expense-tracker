@@ -43,7 +43,7 @@ tasks.named('jacocoTestReport') {
 
 sonar {
   properties {
-    property "sonar.projectKey", "fluffykoo_rent"
+    property "sonar.projectKey", "fluffykoo_travel-expense-tracker"
     property "sonar.organization", "fluffykoo"
     property "sonar.host.url", "https://sonarcloud.io"
     property "sonar.sources", "src/main/java"
