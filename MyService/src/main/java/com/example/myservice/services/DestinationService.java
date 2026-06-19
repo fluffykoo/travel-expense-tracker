@@ -1,35 +1,38 @@
 package com.example.myservice.services;
 
 import com.example.myservice.entities.Destination;
+import com.example.myservice.repositories.DestinationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class DestinationService {
-    private List<Destination> destinations = new ArrayList<>();
+
+    @Autowired
+    private DestinationRepository destinationRepository;
 
     public void addDestination(Destination destination) {
-        destinations.add(destination);
+        destinationRepository.save(destination);
     }
 
     public List<Destination> getDestinations() {
-        return destinations;
+        return destinationRepository.findAll();
     }
 
     public Destination getDestinationById(int id) {
-        return destinations.stream()
-                .filter(d -> d.getId() == id)
-                .findFirst()
-                .orElse(null);
+        return destinationRepository.findById(id).orElse(null);
     }
 
     public void updateStatut(int id, String statut) {
         Destination d = getDestinationById(id);
-        if (d != null) d.setStatut(statut);
+        if (d != null) {
+            d.setStatut(statut);
+            destinationRepository.save(d);
+        }
     }
 
     public void deleteDestination(int id) {
-        destinations.removeIf(d -> d.getId() == id);
+        destinationRepository.deleteById(id);
     }
 }
