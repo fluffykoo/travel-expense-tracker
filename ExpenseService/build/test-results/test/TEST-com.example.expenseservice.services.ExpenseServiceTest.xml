@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.expenseservice.services.ExpenseServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-06-19T13:15:14" hostname="MacBook-Air-de-Oumou.local" time="0.062">
+  <properties/>
+  <testcase name="testAddAndGetExpenses()" classname="com.example.expenseservice.services.ExpenseServiceTest" time="0.009"/>
+  <testcase name="testGetExpensesByDestinationId()" classname="com.example.expenseservice.services.ExpenseServiceTest" time="0.027"/>
+  <testcase name="testGetTotalByDestinationId()" classname="com.example.expenseservice.services.ExpenseServiceTest" time="0.007"/>
+  <testcase name="testDeleteExpense()" classname="com.example.expenseservice.services.ExpenseServiceTest" time="0.008"/>
+  <testcase name="testGetExpenseById()" classname="com.example.expenseservice.services.ExpenseServiceTest" time="0.005"/>
+  <testcase name="testGetExpenseByIdNotFound()" classname="com.example.expenseservice.services.ExpenseServiceTest" time="0.002"/>
+  <system-out><![CDATA[2026-06-19T15:15:14.051+02:00  INFO 88041 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.expenseservice.services.ExpenseServiceTest]: ExpenseServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-19T15:15:14.055+02:00  INFO 88041 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.expenseservice.ExpenseServiceApplication for test class com.example.expenseservice.services.ExpenseServiceTest
+Hibernate: insert into expense (categorie,description,destination_id,montant,id) values (?,?,?,?,default)
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0
+Hibernate: insert into expense (categorie,description,destination_id,montant,id) values (?,?,?,?,default)
+Hibernate: insert into expense (categorie,description,destination_id,montant,id) values (?,?,?,?,default)
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0 where e1_0.destination_id=?
+Hibernate: insert into expense (categorie,description,destination_id,montant,id) values (?,?,?,?,default)
+Hibernate: insert into expense (categorie,description,destination_id,montant,id) values (?,?,?,?,default)
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0 where e1_0.destination_id=?
+Hibernate: insert into expense (categorie,description,destination_id,montant,id) values (?,?,?,?,default)
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0 where e1_0.id=?
+Hibernate: delete from expense where id=?
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0 where e1_0.id=?
+Hibernate: insert into expense (categorie,description,destination_id,montant,id) values (?,?,?,?,default)
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.categorie,e1_0.description,e1_0.destination_id,e1_0.montant from expense e1_0 where e1_0.id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
