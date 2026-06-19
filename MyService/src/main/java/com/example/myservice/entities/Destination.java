@@ -1,9 +1,19 @@
 package com.example.myservice.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Destination {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String pays;
-    private String statut; // "A_VISITER" ou "VISITE"
+    private String statut;
+
+    public Destination() {}
 
     public Destination(int id, String pays, String statut) {
         this.id = id;

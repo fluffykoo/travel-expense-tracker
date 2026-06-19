@@ -1,44 +1,40 @@
 package com.example.myservice.services;
 
 import com.example.myservice.entities.Expense;
+import com.example.myservice.repositories.ExpenseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ExpenseService {
-    private List<Expense> expenses = new ArrayList<>();
+
+    @Autowired
+    private ExpenseRepository expenseRepository;
 
     public void addExpense(Expense expense) {
-        expenses.add(expense);
+        expenseRepository.save(expense);
     }
 
     public List<Expense> getExpenses() {
-        return expenses;
+        return expenseRepository.findAll();
     }
 
     public Expense getExpenseById(int id) {
-        return expenses.stream()
-                .filter(e -> e.getId() == id)
-                .findFirst()
-                .orElse(null);
+        return expenseRepository.findById(id).orElse(null);
     }
 
     public List<Expense> getExpensesByDestinationId(int destinationId) {
-        return expenses.stream()
-                .filter(e -> e.getDestinationId() == destinationId)
-                .collect(Collectors.toList());
+        return expenseRepository.findByDestinationId(destinationId);
     }
 
     public double getTotalByDestinationId(int destinationId) {
-        return expenses.stream()
-                .filter(e -> e.getDestinationId() == destinationId)
+        return expenseRepository.findByDestinationId(destinationId).stream()
                 .mapToDouble(Expense::getMontant)
                 .sum();
     }
 
     public void deleteExpense(int id) {
-        expenses.removeIf(e -> e.getId() == id);
+        expenseRepository.deleteById(id);
     }
 }

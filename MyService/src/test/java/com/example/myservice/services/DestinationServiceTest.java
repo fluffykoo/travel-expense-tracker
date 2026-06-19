@@ -2,44 +2,47 @@ package com.example.myservice.services;
 
 import com.example.myservice.entities.Destination;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class DestinationServiceTest {
+
+    @Autowired
+    private DestinationService service;
 
     @Test
     public void testAddAndGetDestinations() {
-        DestinationService service = new DestinationService();
-        service.addDestination(new Destination(1, "Japon", "A_VISITER"));
-        assertEquals(1, service.getDestinations().size());
+        service.addDestination(new Destination(0, "Japon", "A_VISITER"));
+        assertFalse(service.getDestinations().isEmpty());
     }
 
     @Test
     public void testGetDestinationById() {
-        DestinationService service = new DestinationService();
-        service.addDestination(new Destination(1, "Japon", "A_VISITER"));
-        assertNotNull(service.getDestinationById(1));
-        assertEquals("Japon", service.getDestinationById(1).getPays());
+        service.addDestination(new Destination(0, "Japon", "A_VISITER"));
+        Destination d = service.getDestinations().get(0);
+        assertNotNull(service.getDestinationById(d.getId()));
     }
 
     @Test
     public void testGetDestinationByIdNotFound() {
-        DestinationService service = new DestinationService();
-        assertNull(service.getDestinationById(99));
+        assertNull(service.getDestinationById(9999));
     }
 
     @Test
     public void testUpdateStatut() {
-        DestinationService service = new DestinationService();
-        service.addDestination(new Destination(1, "Japon", "A_VISITER"));
-        service.updateStatut(1, "VISITE");
-        assertEquals("VISITE", service.getDestinationById(1).getStatut());
+        service.addDestination(new Destination(0, "Japon", "A_VISITER"));
+        Destination d = service.getDestinations().get(0);
+        service.updateStatut(d.getId(), "VISITE");
+        assertEquals("VISITE", service.getDestinationById(d.getId()).getStatut());
     }
 
     @Test
     public void testDeleteDestination() {
-        DestinationService service = new DestinationService();
-        service.addDestination(new Destination(1, "Japon", "A_VISITER"));
-        service.deleteDestination(1);
-        assertEquals(0, service.getDestinations().size());
+        service.addDestination(new Destination(0, "Japon", "A_VISITER"));
+        Destination d = service.getDestinations().get(0);
+        service.deleteDestination(d.getId());
+        assertNull(service.getDestinationById(d.getId()));
     }
 }

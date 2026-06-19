@@ -1,11 +1,21 @@
 package com.example.myservice.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Expense {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private double montant;
-    private String categorie; // HOTEL, TRANSPORT, NOURRITURE, ACTIVITE
+    private String categorie;
     private String description;
     private int destinationId;
+
+    public Expense() {}
 
     public Expense(int id, double montant, String categorie, String description, int destinationId) {
         this.id = id;
@@ -27,4 +37,3 @@ public class Expense {
     public void setDescription(String description) { this.description = description; }
     public void setDestinationId(int destinationId) { this.destinationId = destinationId; }
 }
-
