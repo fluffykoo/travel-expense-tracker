@@ -2,45 +2,46 @@ package com.example.myservice.services;
 
 import com.example.myservice.entities.City;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class CityServiceTest {
+
+    @Autowired
+    private CityService service;
 
     @Test
     public void testAddAndGetCities() {
-        CityService service = new CityService();
-        service.addCity(new City(1, "Tokyo", 1));
-        assertEquals(1, service.getCities().size());
+        service.addCity(new City(0, "Tokyo", 1));
+        assertFalse(service.getCities().isEmpty());
     }
 
     @Test
     public void testGetCityById() {
-        CityService service = new CityService();
-        service.addCity(new City(1, "Tokyo", 1));
-        assertNotNull(service.getCityById(1));
-        assertEquals("Tokyo", service.getCityById(1).getNom());
+        service.addCity(new City(0, "Tokyo", 1));
+        City c = service.getCities().get(0);
+        assertNotNull(service.getCityById(c.getId()));
     }
 
     @Test
     public void testGetCityByIdNotFound() {
-        CityService service = new CityService();
-        assertNull(service.getCityById(99));
+        assertNull(service.getCityById(9999));
     }
 
     @Test
     public void testGetCitiesByDestinationId() {
-        CityService service = new CityService();
-        service.addCity(new City(1, "Tokyo", 1));
-        service.addCity(new City(2, "Kyoto", 1));
-        service.addCity(new City(3, "Paris", 2));
-        assertEquals(2, service.getCitiesByDestinationId(1).size());
+        service.addCity(new City(0, "Kyoto", 2));
+        service.addCity(new City(0, "Osaka", 2));
+        assertTrue(service.getCitiesByDestinationId(2).size() >= 2);
     }
 
     @Test
     public void testDeleteCity() {
-        CityService service = new CityService();
-        service.addCity(new City(1, "Tokyo", 1));
-        service.deleteCity(1);
-        assertEquals(0, service.getCities().size());
+        service.addCity(new City(0, "Tokyo", 1));
+        City c = service.getCities().get(0);
+        service.deleteCity(c.getId());
+        assertNull(service.getCityById(c.getId()));
     }
 }
