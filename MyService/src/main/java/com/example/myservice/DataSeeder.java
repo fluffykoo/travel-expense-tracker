@@ -27,6 +27,10 @@ public class DataSeeder implements CommandLineRunner {
     private final AttractionRepository attractions;
     private final ExpenseRepository expenses;
 
+    private static final String A_VENIR = "À venir";
+    private static final String TERMINE = "Terminé";
+    private static final String EN_COURS = "En cours";
+
     public DataSeeder(DestinationRepository destinations, CityRepository cities,
                       AttractionRepository attractions, ExpenseRepository expenses) {
         this.destinations = destinations;
@@ -42,7 +46,7 @@ public class DataSeeder implements CommandLineRunner {
         }
 
 
-        int japon = dest("Japon", "Terminé");
+        int japon = dest("Japon", TERMINE);
         int tokyo = city("Tokyo", japon);
         attr("Temple Sensō-ji", "Le plus ancien temple de Tokyo, dans le quartier animé d'Asakusa.", tokyo);
         attr("Carrefour de Shibuya", "La traversée piétonne la plus célèbre du monde.", tokyo);
@@ -56,7 +60,7 @@ public class DataSeeder implements CommandLineRunner {
         exp(30, DIVERS, "Carte SIM data", japon);
 
 
-        int coree = dest("Corée du Sud", "Terminé");
+        int coree = dest("Corée du Sud", TERMINE);
         int seoul = city("Séoul", coree);
         attr("Palais Gyeongbokgung", "Le grand palais royal de la dynastie Joseon.", seoul);
         attr("Village Bukchon Hanok", "Ruelles de maisons traditionnelles coréennes.", seoul);
@@ -69,7 +73,7 @@ public class DataSeeder implements CommandLineRunner {
         exp(130, SHOPPING, "Cosmétiques K-beauty", coree);
 
 
-        int usa = dest("États-Unis", "À venir");
+        int usa = dest("États-Unis", A_VENIR);
         int ny = city("New York", usa);
         attr("Statue de la Liberté", "L'icône new-yorkaise sur Liberty Island.", ny);
         attr("Central Park", "Le poumon vert au cœur de Manhattan.", ny);
@@ -83,7 +87,7 @@ public class DataSeeder implements CommandLineRunner {
         exp(320, SHOPPING, "Shopping SoHo", usa);
 
 
-        int malaisie = dest("Malaisie", "À venir");
+        int malaisie = dest("Malaisie", A_VENIR);
         int kl = city("Kuala Lumpur", malaisie);
         int langkawi = city("Langkawi", malaisie);
         attr("Tours Petronas", "Les tours jumelles emblématiques de KL.", kl);
@@ -99,7 +103,7 @@ public class DataSeeder implements CommandLineRunner {
         exp(25, ACTIVITES, "Sky Bridge Langkawi", malaisie);
 
 
-        int thai = dest("Thaïlande", "À venir");
+        int thai = dest("Thaïlande", A_VENIR);
         int bangkok = city("Bangkok", thai);
         int phuket = city("Phuket", thai);
         attr("Grand Palais", "Ancienne résidence royale et Wat Phra Kaew.", bangkok);
@@ -117,7 +121,7 @@ public class DataSeeder implements CommandLineRunner {
         exp(40, DIVERS, "Massage thaï", thai);
 
 
-        int espagne = dest("Espagne", "Terminé");
+        int espagne = dest("Espagne", TERMINE);
         int barcelone = city("Barcelone", espagne);
         attr("Sagrada Família", "La basilique inachevée de Gaudí.", barcelone);
         attr("Parc Güell", "Mosaïques colorées signées Gaudí.", barcelone);
@@ -127,7 +131,7 @@ public class DataSeeder implements CommandLineRunner {
         exp(52, ACTIVITES, "Billets Sagrada Família", espagne);
 
 
-        int mali = dest("Mali", "En cours");
+        int mali = dest("Mali", EN_COURS);
         int bamako = city("Bamako", mali);
         attr("Marché de Bamako", "Couleurs, tissus et artisanat malien.", bamako);
         attr("Musée National du Mali", "Art et histoire du pays.", bamako);
@@ -135,7 +139,7 @@ public class DataSeeder implements CommandLineRunner {
         exp(350, HEBERGEMENT, "Hôtel Bamako · 5 nuits", mali);
 
 
-        int uk = dest("Royaume-Uni", "Terminé");
+        int uk = dest("Royaume-Uni", TERMINE);
         int londres = city("Londres", uk);
         attr("British Museum", "Collections du monde entier, entrée libre.", londres);
         attr("Tower Bridge", "Le pont basculant victorien sur la Tamise.", londres);
