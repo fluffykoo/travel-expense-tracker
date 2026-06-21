@@ -15,6 +15,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataSeeder implements CommandLineRunner {
 
+    private static final String TRANSPORT = "Transport";
+    private static final String HEBERGEMENT = "Hébergement";
+    private static final String RESTAURATION = "Restauration";
+    private static final String ACTIVITES = "Activités";
+    private static final String SHOPPING = "Shopping";
+    private static final String DIVERS = "Divers";
+
     private final DestinationRepository destinations;
     private final CityRepository cities;
     private final AttractionRepository attractions;
@@ -40,13 +47,13 @@ public class DataSeeder implements CommandLineRunner {
         attr("Temple Sensō-ji", "Le plus ancien temple de Tokyo, dans le quartier animé d'Asakusa.", tokyo);
         attr("Carrefour de Shibuya", "La traversée piétonne la plus célèbre du monde.", tokyo);
         attr("teamLab Planets", "Musée d'art numérique immersif, pieds dans l'eau.", tokyo);
-        exp(1240, "Transport", "Vols A/R Paris–Tokyo", japon);
-        exp(980, "Hébergement", "Hôtel Shinjuku · 7 nuits", japon);
-        exp(280, "Transport", "Japan Rail Pass", japon);
-        exp(95, "Restauration", "Sushi au marché de Toyosu", japon);
-        exp(70, "Activités", "Billets teamLab Planets", japon);
-        exp(150, "Shopping", "Souvenirs & papeterie", japon);
-        exp(30, "Divers", "Carte SIM data", japon);
+        exp(1240, TRANSPORT, "Vols A/R Paris–Tokyo", japon);
+        exp(980, HEBERGEMENT, "Hôtel Shinjuku · 7 nuits", japon);
+        exp(280, TRANSPORT, "Japan Rail Pass", japon);
+        exp(95, RESTAURATION, "Sushi au marché de Toyosu", japon);
+        exp(70, ACTIVITES, "Billets teamLab Planets", japon);
+        exp(150, SHOPPING, "Souvenirs & papeterie", japon);
+        exp(30, DIVERS, "Carte SIM data", japon);
 
 
         int coree = dest("Corée du Sud", "Terminé");
@@ -54,12 +61,12 @@ public class DataSeeder implements CommandLineRunner {
         attr("Palais Gyeongbokgung", "Le grand palais royal de la dynastie Joseon.", seoul);
         attr("Village Bukchon Hanok", "Ruelles de maisons traditionnelles coréennes.", seoul);
         attr("Tour N de Séoul", "Panorama sur la ville depuis le mont Namsan.", seoul);
-        exp(760, "Transport", "Vols A/R Séoul", coree);
-        exp(620, "Hébergement", "Hôtel Myeongdong · 5 nuits", coree);
-        exp(78, "Restauration", "BBQ coréen & street food", coree);
-        exp(12, "Activités", "Palais Gyeongbokgung", coree);
-        exp(35, "Transport", "Carte T-money", coree);
-        exp(130, "Shopping", "Cosmétiques K-beauty", coree);
+        exp(760, TRANSPORT, "Vols A/R Séoul", coree);
+        exp(620, HEBERGEMENT, "Hôtel Myeongdong · 5 nuits", coree);
+        exp(78, RESTAURATION, "BBQ coréen & street food", coree);
+        exp(12, ACTIVITES, "Palais Gyeongbokgung", coree);
+        exp(35, TRANSPORT, "Carte T-money", coree);
+        exp(130, SHOPPING, "Cosmétiques K-beauty", coree);
 
 
         int usa = dest("États-Unis", "À venir");
@@ -67,13 +74,13 @@ public class DataSeeder implements CommandLineRunner {
         attr("Statue de la Liberté", "L'icône new-yorkaise sur Liberty Island.", ny);
         attr("Central Park", "Le poumon vert au cœur de Manhattan.", ny);
         attr("Times Square", "Le carrefour électrique aux écrans géants.", ny);
-        exp(690, "Transport", "Vols A/R New York", usa);
-        exp(1450, "Hébergement", "Hôtel Manhattan · 5 nuits", usa);
-        exp(240, "Restauration", "Brunchs & diners", usa);
-        exp(75, "Activités", "Empire State Building", usa);
-        exp(160, "Activités", "Comédie musicale Broadway", usa);
-        exp(33, "Transport", "MetroCard", usa);
-        exp(320, "Shopping", "Shopping SoHo", usa);
+        exp(690, TRANSPORT, "Vols A/R New York", usa);
+        exp(1450, HEBERGEMENT, "Hôtel Manhattan · 5 nuits", usa);
+        exp(240, RESTAURATION, "Brunchs & diners", usa);
+        exp(75, ACTIVITES, "Empire State Building", usa);
+        exp(160, ACTIVITES, "Comédie musicale Broadway", usa);
+        exp(33, TRANSPORT, "MetroCard", usa);
+        exp(320, SHOPPING, "Shopping SoHo", usa);
 
 
         int malaisie = dest("Malaisie", "À venir");
@@ -84,12 +91,12 @@ public class DataSeeder implements CommandLineRunner {
         attr("Chinatown – Petaling", "Marché de rue animé et street food.", kl);
         attr("Sky Bridge", "Passerelle suspendue avec vue sur la jungle.", langkawi);
         attr("Plage de Cenang", "Sable blanc et couchers de soleil.", langkawi);
-        exp(850, "Transport", "Vols A/R Kuala Lumpur", malaisie);
-        exp(360, "Hébergement", "Hôtel KLCC · 4 nuits", malaisie);
-        exp(90, "Transport", "Vol interne KL → Langkawi", malaisie);
-        exp(420, "Hébergement", "Resort Langkawi · 3 nuits", malaisie);
-        exp(45, "Restauration", "Street food Jalan Alor", malaisie);
-        exp(25, "Activités", "Sky Bridge Langkawi", malaisie);
+        exp(850, TRANSPORT, "Vols A/R Kuala Lumpur", malaisie);
+        exp(360, HEBERGEMENT, "Hôtel KLCC · 4 nuits", malaisie);
+        exp(90, TRANSPORT, "Vol interne KL → Langkawi", malaisie);
+        exp(420, HEBERGEMENT, "Resort Langkawi · 3 nuits", malaisie);
+        exp(45, RESTAURATION, "Street food Jalan Alor", malaisie);
+        exp(25, ACTIVITES, "Sky Bridge Langkawi", malaisie);
 
 
         int thai = dest("Thaïlande", "À venir");
@@ -100,14 +107,14 @@ public class DataSeeder implements CommandLineRunner {
         attr("Marché de Chatuchak", "L'un des plus grands marchés du monde.", bangkok);
         attr("Plage de Patong", "La plage la plus animée de Phuket.", phuket);
         attr("Grand Bouddha", "Statue de 45 m dominant l'île.", phuket);
-        exp(720, "Transport", "Vols A/R Bangkok", thai);
-        exp(240, "Hébergement", "Hôtel Bangkok · 4 nuits", thai);
-        exp(480, "Hébergement", "Resort Phuket · 5 nuits", thai);
-        exp(65, "Transport", "Vol Bangkok → Phuket", thai);
-        exp(60, "Restauration", "Pad thaï & street food", thai);
-        exp(14, "Activités", "Grand Palais", thai);
-        exp(95, "Activités", "Excursion îles Phi Phi", thai);
-        exp(40, "Divers", "Massage thaï", thai);
+        exp(720, TRANSPORT, "Vols A/R Bangkok", thai);
+        exp(240, HEBERGEMENT, "Hôtel Bangkok · 4 nuits", thai);
+        exp(480, HEBERGEMENT, "Resort Phuket · 5 nuits", thai);
+        exp(65, TRANSPORT, "Vol Bangkok → Phuket", thai);
+        exp(60, RESTAURATION, "Pad thaï & street food", thai);
+        exp(14, ACTIVITES, "Grand Palais", thai);
+        exp(95, ACTIVITES, "Excursion îles Phi Phi", thai);
+        exp(40, DIVERS, "Massage thaï", thai);
 
 
         int espagne = dest("Espagne", "Terminé");
@@ -115,17 +122,17 @@ public class DataSeeder implements CommandLineRunner {
         attr("Sagrada Família", "La basilique inachevée de Gaudí.", barcelone);
         attr("Parc Güell", "Mosaïques colorées signées Gaudí.", barcelone);
         attr("Las Ramblas", "L'avenue piétonne emblématique.", barcelone);
-        exp(160, "Transport", "Vols A/R Barcelone", espagne);
-        exp(480, "Hébergement", "Hôtel Eixample · 4 nuits", espagne);
-        exp(52, "Activités", "Billets Sagrada Família", espagne);
+        exp(160, TRANSPORT, "Vols A/R Barcelone", espagne);
+        exp(480, HEBERGEMENT, "Hôtel Eixample · 4 nuits", espagne);
+        exp(52, ACTIVITES, "Billets Sagrada Família", espagne);
 
 
         int mali = dest("Mali", "En cours");
         int bamako = city("Bamako", mali);
         attr("Marché de Bamako", "Couleurs, tissus et artisanat malien.", bamako);
         attr("Musée National du Mali", "Art et histoire du pays.", bamako);
-        exp(680, "Transport", "Vols A/R Bamako", mali);
-        exp(350, "Hébergement", "Hôtel Bamako · 5 nuits", mali);
+        exp(680, TRANSPORT, "Vols A/R Bamako", mali);
+        exp(350, HEBERGEMENT, "Hôtel Bamako · 5 nuits", mali);
 
 
         int uk = dest("Royaume-Uni", "Terminé");
@@ -133,12 +140,12 @@ public class DataSeeder implements CommandLineRunner {
         attr("British Museum", "Collections du monde entier, entrée libre.", londres);
         attr("Tower Bridge", "Le pont basculant victorien sur la Tamise.", londres);
         attr("London Eye", "La grande roue avec vue sur Westminster.", londres);
-        exp(180, "Transport", "Eurostar A/R Londres", uk);
-        exp(540, "Hébergement", "Hôtel Soho · 3 nuits", uk);
-        exp(95, "Restauration", "Fish & chips + pubs", uk);
-        exp(38, "Activités", "London Eye", uk);
-        exp(40, "Transport", "Oyster card", uk);
-        exp(180, "Shopping", "Shopping Oxford Street", uk);
+        exp(180, TRANSPORT, "Eurostar A/R Londres", uk);
+        exp(540, HEBERGEMENT, "Hôtel Soho · 3 nuits", uk);
+        exp(95, RESTAURATION, "Fish & chips + pubs", uk);
+        exp(38, ACTIVITES, "London Eye", uk);
+        exp(40, TRANSPORT, "Oyster card", uk);
+        exp(180, SHOPPING, "Shopping Oxford Street", uk);
     }
 
     private int dest(String pays, String statut) {
