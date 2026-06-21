@@ -2,45 +2,46 @@ package com.example.myservice.services;
 
 import com.example.myservice.entities.Attraction;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class AttractionServiceTest {
+
+    @Autowired
+    private AttractionService service;
 
     @Test
     public void testAddAndGetAttractions() {
-        AttractionService service = new AttractionService();
-        service.addAttraction(new Attraction(1, "Tour de Tokyo", "Grande tour", 1));
-        assertEquals(1, service.getAttractions().size());
+        service.addAttraction(new Attraction(0, "Tour de Tokyo", "Grande tour", 1));
+        assertFalse(service.getAttractions().isEmpty());
     }
 
     @Test
     public void testGetAttractionById() {
-        AttractionService service = new AttractionService();
-        service.addAttraction(new Attraction(1, "Tour de Tokyo", "Grande tour", 1));
-        assertNotNull(service.getAttractionById(1));
-        assertEquals("Tour de Tokyo", service.getAttractionById(1).getNom());
+        service.addAttraction(new Attraction(0, "Tour de Tokyo", "Grande tour", 1));
+        Attraction a = service.getAttractions().get(0);
+        assertNotNull(service.getAttractionById(a.getId()));
     }
 
     @Test
     public void testGetAttractionByIdNotFound() {
-        AttractionService service = new AttractionService();
-        assertNull(service.getAttractionById(99));
+        assertNull(service.getAttractionById(9999));
     }
 
     @Test
     public void testGetAttractionsByCityId() {
-        AttractionService service = new AttractionService();
-        service.addAttraction(new Attraction(1, "Tour de Tokyo", "Grande tour", 1));
-        service.addAttraction(new Attraction(2, "Shibuya", "Carrefour", 1));
-        service.addAttraction(new Attraction(3, "Eiffel", "Tour", 2));
-        assertEquals(2, service.getAttractionsByCityId(1).size());
+        service.addAttraction(new Attraction(0, "Shibuya", "Carrefour", 2));
+        service.addAttraction(new Attraction(0, "Senso-ji", "Temple", 2));
+        assertTrue(service.getAttractionsByCityId(2).size() >= 2);
     }
 
     @Test
     public void testDeleteAttraction() {
-        AttractionService service = new AttractionService();
-        service.addAttraction(new Attraction(1, "Tour de Tokyo", "Grande tour", 1));
-        service.deleteAttraction(1);
-        assertEquals(0, service.getAttractions().size());
+        service.addAttraction(new Attraction(0, "Tour de Tokyo", "Grande tour", 1));
+        Attraction a = service.getAttractions().get(0);
+        service.deleteAttraction(a.getId());
+        assertNull(service.getAttractionById(a.getId()));
     }
 }

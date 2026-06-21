@@ -39,9 +39,9 @@ public class ExpenseServiceTest {
 
     @Test
     public void testGetTotalByDestinationId() {
-        service.addExpense(new Expense(0, 150.0, "HOTEL", "Hotel Tokyo", 3));
-        service.addExpense(new Expense(0, 50.0, "TRANSPORT", "Metro", 3));
-        assertEquals(200.0, service.getTotalByDestinationId(3));
+        service.addExpense(new Expense(0, 150.0, "HOTEL", "Hotel Tokyo", 999));
+        service.addExpense(new Expense(0, 50.0, "TRANSPORT", "Metro", 999));
+        assertEquals(200.0, service.getTotalByDestinationId(999));
     }
 
     @Test
